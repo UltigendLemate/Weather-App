@@ -7,7 +7,7 @@
           class="search-bar"
           v-model="query"
           placeholder="Search...."
-          @blur="fetchWeather"
+          @keyup.enter="fetchWeather"
           
         />
       </div>
