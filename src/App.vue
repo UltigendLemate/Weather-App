@@ -7,7 +7,8 @@
           class="search-bar"
           v-model="query"
           placeholder="Search...."
-          @keypress="fetchWeather"
+          @blur="fetchWeather"
+          
         />
       </div>
 
@@ -37,13 +38,13 @@ export default {
     };
   },
   methods:{
-    fetchWeather(e){
-      if (e.key == "Enter"){
+    fetchWeather(){
+      
         fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`).then(res=>{
           return res.json();
         }).then(this.setResults)
 
-      }
+      
     },
     setResults(results){
       this.weather = results;
@@ -66,6 +67,7 @@ return `${day} ${date} ${month} ${year}`
 
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -156,6 +158,12 @@ main {
   font-style: italic;
   font-weight: 700;
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+}
+.btn{
+  border-radius: 20px !important;
+  display:inline !important;
+  position:relative;
+  top: 0;
 }
 </style>
 
